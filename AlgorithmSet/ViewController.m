@@ -7,8 +7,13 @@
 //
 
 #import "ViewController.h"
+#import "SLTableViewCell.h"
 
-@interface ViewController ()
+@interface ViewController ()<UITableViewDelegate, UITableViewDataSource>
+
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+
+@property (nonatomic, strong) NSMutableArray * dataSource;
 
 @end
 
@@ -16,8 +21,82 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+  
+    self.navigationItem.title = @"算法练习";
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"add" style:UIBarButtonItemStyleDone target:self action:@selector(add)];
+    [self.tableView registerNib:[UINib nibWithNibName:@"SLTableViewCell" bundle:nil] forCellReuseIdentifier:@"cellID"];
+    self.tableView.estimatedRowHeight = 88;
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    [self getDataSource];
 }
 
+#pragma mark - KVO
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary*)change context:(void *)context{
+    
+}
+
+#pragma mark - GetDataSource
+
+- (void)getDataSource {
+    NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"Question" ofType:@"plist"];
+    NSArray * questions = [[NSArray alloc] initWithContentsOfFile:plistPath];
+    [self.dataSource addObjectsFromArray:questions];
+}
+
+#pragma mark - Getter
+
+- (NSMutableArray *)dataSource {
+    if (_dataSource == nil) {
+        _dataSource = [NSMutableArray array];
+    }
+    return _dataSource;
+}
+
+#pragma mark - Event Handle
+
+- (void)add {
+    
+}
+
+#pragma mark - UITableViewDelegate  UITableViewDataSource
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return _dataSource.count;
+}
+
+//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+//    return 44;
+//}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return 0;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    return nil;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+    return 0;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
+    return nil;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    SLTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"cellID" forIndexPath:indexPath] ;
+    cell.questionLabel.text = [NSString stringWithFormat:@"%ld：  %@",indexPath.row, _dataSource[indexPath.row]];
+    return cell;
+}
+
+- (void )tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
+}
 
 @end
