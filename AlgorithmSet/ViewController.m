@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "SLTableViewCell.h"
+#import <objc/message.h>
 
 @interface ViewController ()<UITableViewDelegate, UITableViewDataSource>
 
@@ -55,8 +56,17 @@
 
 #pragma mark - Event Handle
 
-- (void)add {
-    
+void add(id self, SEL _cmd) {
+    NSLog(@"add ");
+}
+// 作用:去解决没有实现方法,动态添加方法
++(BOOL)resolveInstanceMethod:(SEL)sel {
+    if (sel == @selector(add)) {
+        // 添加方法
+        class_addMethod(self, sel, (IMP)add,"v@");
+        return YES;
+    }
+    return [super resolveInstanceMethod:sel];
 }
 
 #pragma mark - UITableViewDelegate  UITableViewDataSource
