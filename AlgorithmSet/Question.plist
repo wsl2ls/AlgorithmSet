@@ -8,8 +8,7 @@
 	<string>二分查找</string>
 	<string>哈希表</string>
 	<string>问题 : 给定一个有符号整型数,将这个数字反转并输出：
-给定 123 输出 321 
-给定 250 输出 52</string>
+给定 521 输出 125</string>
 	<string>一段英文单词逆序输出，类似这样： 
 hello my name is Jack 
 输出： Jack is name my hello   </string>
@@ -17,6 +16,8 @@ hello my name is Jack
 	<string>找出数组中重复出现过的元素</string>
 	<string>判断两个单链表是否交叉，并求出交叉点</string>
 	<string>二维数组回形遍历</string>
-	<string>hkhkh发货后发货客服反馈峰会上开发和是否合法分开很舒服卡夫卡是否就ing你的hi个大大师伯急促部分你列表发的打撒北里护理费很舒服六氟化硫福建省路费官方价格价格</string>
+	<string>求两个数组的交集</string>
+	<string>两个类的最近公共节结点</string>
+	<string>两个单链表的一个公共结点 或二叉树的最近公共结点</string>
 </array>
 </plist>

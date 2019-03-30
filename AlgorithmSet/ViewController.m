@@ -40,10 +40,11 @@
     [self getDataSource];
 }
 
-#pragma mark - KVO
+#pragma mark - Help Methods
 
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary*)change context:(void *)context{
-    
+void ShowAlertView(NSString *message){
+    UIAlertView * alertView = [[UIAlertView alloc] initWithTitle:@"输出" message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [alertView show];
 }
 
 #pragma mark - GetDataSource
@@ -160,6 +161,61 @@ void add(id self, SEL _cmd) {
 
 - (void )tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
+    SEL sel = NSSelectorFromString([NSString stringWithFormat:@"doSet%ld",(long)indexPath.row]);
+    if ([self respondsToSelector:sel]) {
+        [self performSelector:sel];
+    }
+}
+
+#pragma mark - 算法
+
+/**
+ 整数逆序输出
+ */
+- (void)doSet5 {
+    printf("整数逆序输出：%d",Reverse(521));
+    ShowAlertView([NSString stringWithFormat:@"逆序输出：%d",Reverse(521)]);
+}
+int Reverse(int n) {
+    int m= 0;
+    do {
+        m = m*10 + n%10;
+        n = n/10;
+    } while ( n!=0 );
+    return m;
+}
+
+/**
+ 英文句子逆序输出
+ */
+- (void)doSet6 {
+    
+    NSArray * array ;
+    
+    
+}
+
+/**
+ 找出一组数据中第二大的数
+ */
+- (void)doSet7 {
+    int array[] = {12, 14, 4, 76, 3, 34, 17, 13, 4};
+    printf("第二大数值：%d",FindSecond(array, 9));
+    ShowAlertView([NSString stringWithFormat:@"第二大数值：%d  时间复杂度：O(n)",FindSecond(array, 9)]);
+}
+int FindSecond(int arr[], int n) {
+    int max = arr[0];
+    int secMax = 0;
+    for (int i = 1; i < n; i++) {
+        if (arr[i] > max) {
+            secMax = max;
+            max = arr[i];
+        }
+        if (arr[i] > secMax && arr[i] < max) {
+            secMax = arr[i];
+        }
+    }
+    return secMax;
 }
 
 @end
