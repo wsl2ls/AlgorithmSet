@@ -14,10 +14,8 @@ hello my name is Jack
 输出： Jack is name my hello   </string>
 	<string>有一个int类型的数组，如何找出里面第二大的数，同时算法的时间复杂度是多少？</string>
 	<string>找出数组中重复出现过的元素</string>
-	<string>判断两个单链表是否交叉，并求出交叉点</string>
 	<string>二维数组回形遍历</string>
 	<string>求两个数组的交集</string>
-	<string>两个类的最近公共节结点</string>
-	<string>两个单链表的一个公共结点 或二叉树的最近公共结点</string>
+	<string>两个类的最近公共父类 或 两个单链表的第一个公共结点 或 二叉树上两个子结点的最近公共结点</string>
 </array>
 </plist>
