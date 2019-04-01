@@ -188,11 +188,15 @@ int Reverse(int n) {
 /**
  英文句子逆序输出
  */
-- (void)doSet6 {
-    
-    NSArray * array ;
-    
-    
+-(void)doSet6 {
+    NSString * str = @"hello my name is WSL.";
+    NSArray *stringArr = [str componentsSeparatedByString:@" "];
+    NSMutableArray *newStringArr = [[NSMutableArray alloc] init];
+    for (int i = 0; i < stringArr.count; i++) {
+      [newStringArr addObject:stringArr[stringArr.count - i - 1]];
+    }
+    NSString *string = [newStringArr componentsJoinedByString:@" "];
+    ShowAlertView([NSString stringWithFormat:@"逆序输出：%@ ",string]);
 }
 
 /**
@@ -216,6 +220,10 @@ int FindSecond(int arr[], int n) {
         }
     }
     return secMax;
+}
+
+- (void)doSet9 {
+   
 }
 
 @end

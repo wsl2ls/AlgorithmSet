@@ -10,8 +10,8 @@
 	<string>问题 : 给定一个有符号整型数,将这个数字反转并输出：
 给定 521 输出 125</string>
 	<string>一段英文单词逆序输出，类似这样： 
-hello my name is Jack 
-输出： Jack is name my hello   </string>
+hello my name is WSL.
+输出： WSL. is name my hello   </string>
 	<string>有一个int类型的数组，如何找出里面第二大的数，同时算法的时间复杂度是多少？</string>
 	<string>找出数组中重复出现过的元素</string>
 	<string>二维数组回形遍历</string>
