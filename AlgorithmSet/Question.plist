@@ -14,6 +14,7 @@ hello my name is WSL.
 输出： WSL. is name my hello   </string>
 	<string>有一个int类型的数组，如何找出里面第二大的数，同时算法的时间复杂度是多少？</string>
 	<string>找出数组中重复出现过的元素</string>
+	<string>去掉数组当中重复的数据元素</string>
 	<string>二维数组回形遍历</string>
 	<string>求两个数组的交集</string>
 	<string>两个类的最近公共父类 或 两个单链表的第一个公共结点 或 二叉树上两个子结点的最近公共结点</string>
