@@ -1,6 +1,6 @@
 /*
  
- 根据逆波兰表示法，求表达式的值。(即后缀表达式:https://baike.baidu.com/item/逆波兰式/128437)
+ 1. 根据逆波兰表示法，求表达式的值。(即后缀表达式:https://baike.baidu.com/item/逆波兰式/128437)
  
  有效的运算符包括 +, -, *, / 。每个运算对象可以是整数，也可以是另一个逆波兰表达式。
  
@@ -62,7 +62,7 @@ func calculate(left: Int, right: Int, operatorStr: String) -> Int {
 }
 
 //返回逆波兰表达式的值
-func evalRPN(tokens: [String] ) -> Int {
+func evalRPN(tokens: [String] ) -> Int? {
     //数组 模拟 栈
     var stack: [Int] = [];
     
@@ -85,7 +85,7 @@ func evalRPN(tokens: [String] ) -> Int {
             stack.append(Int(string)!)
         }
     }
-    return stack.first!
+    return stack.first
 }
 
 // 输入的逆波兰表达式
@@ -93,4 +93,4 @@ let input = ["10", "6", "9", "3", "+", "-11", "*", "/", "*", "17", "+", "5", "+"
 
 let value = evalRPN(tokens: input)
 
-print("逆波兰表达式 \(input) \n值：\(value)")
+print("逆波兰表达式 \(input) \n值：\(value ?? 0)")
