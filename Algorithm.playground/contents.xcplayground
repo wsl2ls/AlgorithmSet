@@ -2,6 +2,6 @@
 <playground version='6.0' target-platform='ios'>
     <pages>
         <page name='1. 逆波兰表达式求值'/>
-        <page name='2.'/>
+        <page name='2. 合并两个有序链表'/>
     </pages>
 </playground>
