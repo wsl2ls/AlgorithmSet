@@ -78,7 +78,7 @@ func mergeKLists1(_ lists: [ListNode?]) -> ListNode? {
     return headNode.next
 }
 
-//思路2 -
+//思路2 - 逐一比较  时间复杂度O(kn) k:链表个数 n:链表节点总个数
 func mergeKLists2(_ lists: [ListNode?]) -> ListNode? {
     if lists.count == 0 { return nil }
     
