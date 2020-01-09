@@ -3,5 +3,6 @@
     <pages>
         <page name='1. 逆波兰表达式求值'/>
         <page name='2. 合并两个有序链表'/>
+        <page name='3. 合并K个有序链表'/>
     </pages>
 </playground>
