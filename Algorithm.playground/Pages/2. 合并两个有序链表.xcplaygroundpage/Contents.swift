@@ -16,6 +16,8 @@
  
  */
 
+import Foundation
+
 //链表节点
 public class ListNode {
     public var val: Int
@@ -45,7 +47,7 @@ func creatList2 () -> ListNode? {
 }
 
 /*
- 思路1. 迭代 时间复杂度O(n) 空间复杂度S(1)(基本可忽略)  n:链表总个数
+ 思路1. 迭代、逐一比较 时间复杂度O(n) 空间复杂度S(1)(基本可忽略)  n:链表总个数
  */
 /*
 ///  返回合并后的新链表头结点
@@ -128,6 +130,3 @@ print("合并后的链表：\(string)")
 //print(newHeadNode?.next?.next?.next?.next?.val as Any)
 //print(newHeadNode?.next?.next?.next?.next?.next?.val as Any)
 //print(newHeadNode?.next?.next?.next?.next?.next?.next?.val as Any)
-
-
-
