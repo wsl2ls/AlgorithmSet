@@ -16,6 +16,8 @@
  著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
  */
 
+import UIKit
+
 //链表节点
 public class ListNode {
     public var val: Int
@@ -126,22 +128,35 @@ func mergeKLists3(_ lists: [ListNode?]) -> ListNode? {
     return mutableLists[0]
 }
 
-//思路4 - 分治法(最优解推荐) 时间复杂度O(nlogk)
+//思路4 - 分治法/两两合并(最优解推荐) 时间复杂度O(nlogk)
+//示意图在该Page的Sources里
 func mergeKLists4(_ lists: [ListNode?]) -> ListNode? {
     if lists.count == 0 { return nil }
     //因为参数lists默认是let，不可变的
     var mutableLists :[ListNode?] = lists
+    
+    //当前链表间的步长
     var step = 1
+    //每次两两合并的结果 再次分组两两合并
     while (step < mutableLists.count) {
-        var nextStep = step << 1  // = step * 2
-        for i in (0 ..< mutableLists.count) {
-            var node1 = mutableLists[i]
-            var node2 = mutableLists[i + step]
-            //合并
-            mutableLists[i] = mergeTwoLists(&node1, &node2)
+        //下一次的步长
+        let nextStep = step << 2  // == step * 2
+        var index = 0
+        //两两合并 并把结果
+        for _ in (0..<mutableLists.count) {
+            var node1 = mutableLists[index]
+            var node2 = mutableLists[index + step]
+            //保存合并结果
+            mutableLists[index] = mergeTwoLists(&node1, &node2)
+            index = index + nextStep
+            if index >= mutableLists.count {
+                break
+            }
         }
+        //更新步长
         step = nextStep
     }
+    
     return mutableLists[0];
 }
 
@@ -167,9 +182,14 @@ func mergeTwoLists(_ node1:inout ListNode?, _ node2:inout ListNode?) -> ListNode
 var headNode1: ListNode? = creatList1()
 var headNode2: ListNode? = creatList2()
 var headNode3: ListNode? = creatList3()
+var headNode4: ListNode? = creatList1()
+var headNode5: ListNode? = creatList2()
+var headNode6: ListNode? = creatList3()
+var headNode7: ListNode? = creatList2()
+
 
 //输出新链表
-var newHeadNode: ListNode? = mergeKLists3([headNode1, headNode2, headNode3])
+var newHeadNode: ListNode? = mergeKLists4([headNode1, headNode2, headNode3])
 var string: String = "\(newHeadNode!.val)"
 var nextNode : ListNode? = newHeadNode?.next
 while nextNode != nil {
