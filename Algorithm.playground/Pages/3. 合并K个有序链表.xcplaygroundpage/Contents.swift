@@ -140,18 +140,18 @@ func mergeKLists4(_ lists: [ListNode?]) -> ListNode? {
     //每次两两合并的结果 再次分组两两合并
     while (step < mutableLists.count) {
         //下一次的步长
-        let nextStep = step << 2  // == step * 2
+        let nextStep = step * 2
         var index = 0
         //两两合并 并把结果
         for _ in (0..<mutableLists.count) {
+            if index >= mutableLists.count || index + step >= mutableLists.count {
+                break
+            }
             var node1 = mutableLists[index]
             var node2 = mutableLists[index + step]
             //保存合并结果
             mutableLists[index] = mergeTwoLists(&node1, &node2)
             index = index + nextStep
-            if index >= mutableLists.count {
-                break
-            }
         }
         //更新步长
         step = nextStep
@@ -182,10 +182,7 @@ func mergeTwoLists(_ node1:inout ListNode?, _ node2:inout ListNode?) -> ListNode
 var headNode1: ListNode? = creatList1()
 var headNode2: ListNode? = creatList2()
 var headNode3: ListNode? = creatList3()
-var headNode4: ListNode? = creatList1()
-var headNode5: ListNode? = creatList2()
-var headNode6: ListNode? = creatList3()
-var headNode7: ListNode? = creatList2()
+//var headNode4: ListNode? = creatList3()
 
 
 //输出新链表
