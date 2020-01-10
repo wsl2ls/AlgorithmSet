@@ -46,12 +46,12 @@ public class TreeNode {
     }
 }
 
-/* 创建一个二叉树
- 5
+/* 初始化创建一个二叉树
+  5
  / \
  1   4
-      / \
-     3   6
+    / \
+    3  6
  */
 func creatBinaryTree() -> TreeNode {
     let tree5 = TreeNode.init(5)
@@ -70,21 +70,52 @@ func creatBinaryTree() -> TreeNode {
 
 
 /* 思路1 - 中序遍历 (左-root-右)
- 二叉搜索树的中序遍历结果必然是升序的
+ * 时间复杂度 O(n) 空间复杂度 S(n)  n: 节点总数
+ * 二叉搜索树的中序遍历结果必然是升序的
  */
 public var last = Int.min
-func isValidBST(_ root: TreeNode?) -> Bool {
+func isValidBST1(_ root: TreeNode?) -> Bool {
     //空树
     if root ==  nil { return true }
     //验证左子树是否是二叉搜索树
-    if !isValidBST(root?.left) { return false }
-    //保存前一次的值
+    if !isValidBST1(root?.left) { return false }
+    //保存前一次遍历的值
     if  last != Int.min && root!.val <= last  { return false }
     last = root!.val
     //验证右子树是否是二叉搜索树
-    if !isValidBST(root?.right) { return false}
+    if !isValidBST1(root?.right) { return false}
     return true
 }
 
+
+/* 思路2 - 遍历的同时指定范围
+ * 时间复杂度 O(n) 空间复杂度 S(n)  n: 节点总数
+ * 在遍历每一个节点的时候，都指定它的上界和下界，节点的取值范围（下界， 上界）
+ * 这种思路适合所有的遍历方式（前序、中序、后序、层序）
+ */
+func isValidBST2(_ root: TreeNode?) -> Bool {
+    // 采用前序遍历的方式  树根的上线和下线：是无穷小 和 无穷大
+    return isValidBST2(root, Int.min, Int.max)
+}
+//判断每个节点的值是否超出 下界 和 上界
+func isValidBST2(_ root: TreeNode?, _ min: Int, _ max: Int) -> Bool {
+    //空树
+    if root ==  nil { return true }
+    if min != Int.min && root!.val <= min {
+        return false
+    }
+    if max != Int.max && root!.val >= max {
+        return false
+    }
+    if !isValidBST2(root?.left, min, root!.val) {
+        return false
+    }
+    if !isValidBST2(root?.right, root!.val, max) {
+        return false
+    }
+    return true
+}
+
+
 //输出验证结果
-print("二叉搜索树验证结果：\(isValidBST(creatBinaryTree()))")
+print("二叉搜索树验证结果：\(isValidBST2(creatBinaryTree()))")
