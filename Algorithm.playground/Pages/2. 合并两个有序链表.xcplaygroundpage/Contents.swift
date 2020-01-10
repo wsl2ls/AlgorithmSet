@@ -47,63 +47,65 @@ func creatList2 () -> ListNode? {
 }
 
 /*
- 思路1. 迭代、逐一比较 时间复杂度O(n) 空间复杂度S(1)(基本可忽略)  n:链表总个数
- */
-/*
- ///  返回合并后的新链表头结点
- /// - Parameters:
- ///   - node1: 链表1 头结点
- ///   - node2:  链表2 头结点
- func mergeTwoLists(_ node1:inout ListNode?, _ node2:inout ListNode?) -> ListNode? {
- //头结点
- var headNode: ListNode?
- if (node1?.val ?? 0) <= (node2?.val ?? 0 ) {
- headNode = ListNode.init(node1!.val)   //S(1)
- headNode?.next = node1?.next
- }else {
- headNode = ListNode.init(node2!.val)  //S(1)
- headNode?.next = node2?.next
- }
- 
- //当前节点
- var currentNode: ListNode? = headNode
- //循环
- while node1 != nil && node2 != nil {
- if node1!.val <= node2!.val {
- // 重新指定链表1 的头结点
- node1 = node1?.next;
- //先改变当前节点的next节点
- currentNode?.next = node2
- //更新重置当前新的链表节点
- currentNode = node2
- }else {
- // 重新指定链表2 的头结点
- node2 = node2?.next;
- //先改变当前节点的next节点
- currentNode?.next = node1
- //更新重置当前新的链表节点
- currentNode = currentNode?.next
- }
- }
- return headNode
- }
+ 思路1. 迭代、逐一比较  n:链表节点总个数
+ 时间复杂度O(n) 空间复杂度S(1)(基本可忽略)
  */
 
+///  返回合并后的新链表头结点
+/// - Parameters:
+///   - node1: 链表1 头结点
+///   - node2:  链表2 头结点
+public var headNode: ListNode? = ListNode.init(0)  //S(1)
+func mergeTwoLists1(_ node1:inout ListNode?, _ node2:inout ListNode?) -> ListNode? {
+    //头结点
+    if (node1?.val ?? 0) <= (node2?.val ?? 0 ) {
+        headNode?.val = node1!.val
+        headNode?.next = node1?.next
+    }else {
+        headNode?.val = node2!.val
+        headNode?.next = node2?.next
+    }
+    
+    //当前节点
+    var currentNode: ListNode? = headNode
+    //循环
+    while node1 != nil && node2 != nil {
+        if node1!.val <= node2!.val {
+            // 重新指定链表1 的头结点
+            node1 = node1?.next;
+            //先改变当前节点的next节点
+            currentNode?.next = node2
+            //更新重置当前新的链表节点
+            currentNode = node2
+        }else {
+            // 重新指定链表2 的头结点
+            node2 = node2?.next;
+            //先改变当前节点的next节点
+            currentNode?.next = node1
+            //更新重置当前新的链表节点
+            currentNode = currentNode?.next
+        }
+    }
+    return headNode
+}
+
+
 /*
- 思路2. 递归  时间复杂度O(n)
+ 思路2. 递归  n:链表节点总个数
+ 时间复杂度O(n)  空间复杂度S(n)
  */
-func mergeTwoLists(_ node1:inout ListNode?, _ node2:inout ListNode?) -> ListNode? {
+func mergeTwoLists2(_ node1:inout ListNode?, _ node2:inout ListNode?) -> ListNode? {
     if node1 == nil { return node2 }
     if node2 == nil { return node1 }
     if (node1?.val ?? 0) <= (node2?.val ?? 0 ) {
         var newNode1 = node1?.next
         var newNode2 = node2
-        node1?.next =  mergeTwoLists(&newNode1, &newNode2)
+        node1?.next =  mergeTwoLists2(&newNode1, &newNode2)
         return node1
     }else {
         var newNode1 = node1
         var newNode2 = node2?.next
-        node2?.next =  mergeTwoLists(&newNode1, &newNode2)
+        node2?.next =  mergeTwoLists2(&newNode1, &newNode2)
         return node2
     }
 }
@@ -113,7 +115,7 @@ var headNode1: ListNode? = creatList1()
 var headNode2: ListNode? = creatList2()
 
 //输出新链表
-var newHeadNode: ListNode? = mergeTwoLists(&headNode1, &headNode2)
+var newHeadNode: ListNode? = mergeTwoLists1(&headNode1, &headNode2)
 var string: String = "\(newHeadNode!.val)"
 var currentNode : ListNode? = newHeadNode?.next
 while currentNode != nil {

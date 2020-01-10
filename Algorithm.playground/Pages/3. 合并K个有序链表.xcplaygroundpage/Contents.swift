@@ -80,7 +80,9 @@ func mergeKLists1(_ lists: [ListNode?]) -> ListNode? {
     return headNode.next
 }
 
-//思路2 - 逐一比较  时间复杂度O(kn) k:链表个数 n:链表节点总个数
+/* 思路2 - 逐一比较
+  时间复杂度O(kn) 空间复杂度S(1) k:链表个数 n:链表节点总个数
+*/
 func mergeKLists2(_ lists: [ListNode?]) -> ListNode? {
     //因为参数lists默认是let，不可变的
     var mutableLists :[ListNode?] = lists
@@ -115,21 +117,25 @@ func mergeKLists2(_ lists: [ListNode?]) -> ListNode? {
     return headNode?.next
 }
 
-//思路3 - 逐一两两合并  时间复杂度O(kn) k:链表个数 n:链表节点总个数
+/* 思路3 - 逐一两两合并
+ 时间复杂度O(kn) k:链表个数 n:链表节点总个数
+ */
 func mergeKLists3(_ lists: [ListNode?]) -> ListNode? {
     if lists.count == 0 { return nil }
     //因为参数lists默认是let，不可变的
     var mutableLists :[ListNode?] = lists
     for i in (1 ..< mutableLists.count){
-        var node1 = mutableLists[0]
-        var node2 = mutableLists[i]
-        mutableLists[0] = mergeTwoLists(&node1 ,&node2)
+        let node1 = mutableLists[0]
+        let node2 = mutableLists[i]
+        mutableLists[0] = mergeTwoLists(node1 ,node2)
     }
     return mutableLists[0]
 }
 
-//思路4 - 分治法/两两合并(最优解推荐) 时间复杂度O(nlogk)
-//示意图在该Page的Sources里
+/*思路4 - 分治法/两两合并(最优解推荐)
+ 时间复杂度O(nlogk)  k:链表个数 n:链表节点总个数
+ 示意图在该Page的Sources里
+ */
 func mergeKLists4(_ lists: [ListNode?]) -> ListNode? {
     if lists.count == 0 { return nil }
     //因为参数lists默认是let，不可变的
@@ -147,10 +153,10 @@ func mergeKLists4(_ lists: [ListNode?]) -> ListNode? {
             if index >= mutableLists.count || index + step >= mutableLists.count {
                 break
             }
-            var node1 = mutableLists[index]
-            var node2 = mutableLists[index + step]
+            let node1 = mutableLists[index]
+            let node2 = mutableLists[index + step]
             //保存合并结果
-            mutableLists[index] = mergeTwoLists(&node1, &node2)
+            mutableLists[index] = mergeTwoLists(node1, node2)
             index = index + nextStep
         }
         //更新步长
@@ -160,19 +166,19 @@ func mergeKLists4(_ lists: [ListNode?]) -> ListNode? {
     return mutableLists[0];
 }
 
-// 递归 合并两个有序序列
-func mergeTwoLists(_ node1:inout ListNode?, _ node2:inout ListNode?) -> ListNode? {
+// 递归 合并两个有序序列 
+func mergeTwoLists(_ node1: ListNode?, _ node2: ListNode?) -> ListNode? {
     if node1 == nil { return node2 }
     if node2 == nil { return node1 }
     if (node1?.val ?? 0) <= (node2?.val ?? 0 ) {
-        var newNode1 = node1?.next
-        var newNode2 = node2
-        node1?.next =  mergeTwoLists(&newNode1, &newNode2)
+        let newNode1 = node1?.next
+        let newNode2 = node2
+        node1?.next =  mergeTwoLists(newNode1, newNode2)
         return node1
     }else {
-        var newNode1 = node1
-        var newNode2 = node2?.next
-        node2?.next =  mergeTwoLists(&newNode1, &newNode2)
+        let newNode1 = node1
+        let newNode2 = node2?.next
+        node2?.next =  mergeTwoLists(newNode1, newNode2)
         return node2
     }
 }
