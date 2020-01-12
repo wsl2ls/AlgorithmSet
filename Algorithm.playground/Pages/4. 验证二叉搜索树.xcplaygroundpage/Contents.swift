@@ -19,11 +19,11 @@
  示例 2:
  
  输入:
- 5
+  5
  / \
  1   4
-      / \
-     3   6
+    / \
+    3  6
  输出: false
  解释: 输入为: [5,1,4,null,null,3,6]。
       根节点的值为 5 ，但是其右子节点值为 4 。
@@ -73,15 +73,15 @@ func creatBinaryTree() -> TreeNode {
  * 时间复杂度 O(n) 空间复杂度 S(n)  n: 节点总数
  * 二叉搜索树的中序遍历结果必然是升序的
  */
-public var last = Int.min
+public var lastVal = Int.min
 func isValidBST1(_ root: TreeNode?) -> Bool {
     //空树
     if root ==  nil { return true }
     //验证左子树是否是二叉搜索树
     if !isValidBST1(root?.left) { return false }
     //保存前一次遍历的值
-    if  last != Int.min && root!.val <= last  { return false }
-    last = root!.val
+    if  lastVal != Int.min && root!.val <= lastVal  { return false }
+    lastVal = root!.val
     //验证右子树是否是二叉搜索树
     if !isValidBST1(root?.right) { return false}
     return true
