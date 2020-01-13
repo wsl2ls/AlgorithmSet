@@ -6,5 +6,6 @@
         <page name='3. 合并K个有序链表'/>
         <page name='4. 验证二叉搜索树'/>
         <page name='5. 二叉树的前中后层序遍历'/>
+        <page name='6. 二叉树中的最大路径和'/>
     </pages>
 </playground>
