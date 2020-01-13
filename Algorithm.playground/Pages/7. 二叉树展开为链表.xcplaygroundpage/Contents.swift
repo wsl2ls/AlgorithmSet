@@ -44,22 +44,24 @@ public class TreeNode {
  初始化创建一个二叉树
  */
 func creatBinaryTree() -> TreeNode {
-    let tree10 = TreeNode.init(-10)
-    let tree9 = TreeNode.init(9)
-    let tree20 = TreeNode.init(20)
-    let tree15 = TreeNode.init(15)
-    let tree7 = TreeNode.init(7)
+    let tree1 = TreeNode.init(1)
+    let tree2 = TreeNode.init(2)
+    let tree3 = TreeNode.init(3)
+    let tree4 = TreeNode.init(4)
+    let tree5 = TreeNode.init(5)
+    let tree6 = TreeNode.init(6)
     
-    tree10.left = tree9
-    tree10.right = tree20
-    tree20.left = tree15
-    tree20.right = tree7
+    tree1.left = tree2
+    tree1.right = tree5
+    tree2.left = tree3
+    tree2.right = tree4
+    tree5.right = tree6
     
-    return tree10
+    return tree1
 }
 
 
-//方法1 原地将它展开为链表  思路 前序遍历
+//方法1 原地将它展开为链表  思路 前序遍历  时间复杂度O(nlogn)
 func flatten1(_ root: TreeNode?) {
     if root == nil {
         return
@@ -79,7 +81,7 @@ func flatten1(_ root: TreeNode?) {
     flatten1(root?.right)
 }
 
-//方法2
+//方法2 时间复杂度O(nlogn)  空间复杂度S(1)
 func flatten2(_ root: inout TreeNode?) {
     while root != nil {
         if root?.left != nil {
@@ -100,7 +102,7 @@ func flatten2(_ root: inout TreeNode?) {
     }
 }
 
-// 思路3 后序遍历 时间复杂度O(n)
+// 思路3 后序遍历 时间复杂度O(n)  空间复杂度S(n)
 //上一个节点
 var prevNode: TreeNode?
 func flatten3(_ root: TreeNode?) {
@@ -115,4 +117,5 @@ func flatten3(_ root: TreeNode?) {
     }
     prevNode = root
 }
+
 
