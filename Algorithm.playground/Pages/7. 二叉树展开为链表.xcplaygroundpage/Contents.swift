@@ -40,7 +40,6 @@ public class TreeNode {
         self.right = nil
     }
 }
-
 /*
  初始化创建一个二叉树
  */
@@ -60,7 +59,7 @@ func creatBinaryTree() -> TreeNode {
 }
 
 
-//方法1 原地将它展开为链表  思路 前序遍历  时间复杂度O(n) 
+//方法1 原地将它展开为链表  思路 前序遍历
 func flatten1(_ root: TreeNode?) {
     if root == nil {
         return
@@ -90,7 +89,7 @@ func flatten2(_ root: inout TreeNode?) {
             root?.right = root?.left
             //清空left
             root?.left = nil
-            // 将旧的right嫁接到root的最右下角
+            //将旧的right嫁接到root的最右下角
             var rightMost = root
             while rightMost?.right != nil {
                 rightMost = rightMost?.right
@@ -99,5 +98,21 @@ func flatten2(_ root: inout TreeNode?) {
         }
         root = root?.right
     }
+}
+
+// 思路3 后序遍历 时间复杂度O(n)
+//上一个节点
+var prevNode: TreeNode?
+func flatten3(_ root: TreeNode?) {
+    if root == nil {
+        return
+    }
+    flatten3(root?.right)
+    flatten3(root?.left)
+    if prevNode != nil {
+        root?.right = prevNode
+        root?.left = nil
+    }
+    prevNode = root
 }
 
