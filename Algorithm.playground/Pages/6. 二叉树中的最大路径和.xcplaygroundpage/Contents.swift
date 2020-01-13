@@ -60,7 +60,7 @@ func creatBinaryTree() -> TreeNode {
     return tree10
 }
 
-
+//和
 public var sum: Int = Int.min
 // 计算每个节点node提供给父节点的最大路径值  类似于后序遍历
 func value(_ node: TreeNode?) -> Int{
@@ -71,7 +71,7 @@ func value(_ node: TreeNode?) -> Int{
     return node!.val + max(leftV, rightV)
 }
 
-//二叉树中的最大路径和
+//二叉树中的最大路径和  时间复杂度O(n)  空间复杂度S(n)
 func maxPathSum(_ root: TreeNode?) -> Int {
     value(root)
     return sum
