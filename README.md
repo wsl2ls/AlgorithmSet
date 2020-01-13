@@ -6,3 +6,6 @@
 3. [合并 k 个排序链表，返回合并后的排序链表](https://leetcode-cn.com/problems/merge-k-sorted-lists)
 4. [验证二叉搜索树](https://leetcode-cn.com/problems/validate-binary-search-tree)
 5. [二叉树的前中后层序遍历](https://leetcode-cn.com/problemset/algorithms/)
+6. [二叉树中的最大路径和](https://leetcode-cn.com/problems/binary-tree-maximum-path-sum)
+7. [二叉树展开为链表](https://leetcode-cn.com/problems/flatten-binary-tree-to-linked-list)
+8. [打家劫舍](https://leetcode-cn.com/problems/house-robber)
