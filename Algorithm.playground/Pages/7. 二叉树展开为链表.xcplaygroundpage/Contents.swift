@@ -61,7 +61,7 @@ func creatBinaryTree() -> TreeNode {
 }
 
 
-//方法1 原地将它展开为链表  思路 前序遍历  时间复杂度O(nlogn)
+//思路1. 前序遍历  时间复杂度O(nlogn)
 func flatten1(_ root: TreeNode?) {
     if root == nil {
         return
@@ -81,7 +81,7 @@ func flatten1(_ root: TreeNode?) {
     flatten1(root?.right)
 }
 
-//方法2 时间复杂度O(nlogn)  空间复杂度S(1)
+//思路2. 时间复杂度O(nlogn)  空间复杂度S(1)
 func flatten2(_ root: inout TreeNode?) {
     while root != nil {
         if root?.left != nil {
@@ -102,7 +102,7 @@ func flatten2(_ root: inout TreeNode?) {
     }
 }
 
-// 思路3 后序遍历 时间复杂度O(n)  空间复杂度S(n)
+// 思路3. 后序遍历 时间复杂度O(n)  空间复杂度S(n)
 //上一个节点
 var prevNode: TreeNode?
 func flatten3(_ root: TreeNode?) {
