@@ -89,7 +89,7 @@ func rob2(_ nums: [Int], _ begin: Int) -> Int {
 func rob3(_ nums: [Int]) -> Int {
     if(nums.count == 0) { return 0}
     if (nums.count == 1) {return nums[0]}
-    
+    // array[3] 表示从第3号房子偷出来的最大金额
     var array: [Int] = [Int](repeating: 0, count: nums.count)
     array[0] = nums[0]
     array[1] = max(nums[0], nums[1])

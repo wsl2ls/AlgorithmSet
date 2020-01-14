@@ -9,5 +9,6 @@
         <page name='6. 二叉树中的最大路径和'/>
         <page name='7. 二叉树展开为链表'/>
         <page name='8. 打家劫舍'/>
+        <page name='9. 前 K 个高频元素'/>
     </pages>
 </playground>
