@@ -32,15 +32,21 @@ func topKFrequent1(_ nums: [Int], _ k: Int) -> [Int] {
         let count: Int = dict[num] ?? 0
         dict[num] = count + 1
     }
+    
     //排序 从大到小 S(m) O(mlogm)  m是数组中不同元素的数量
-    let result: [(Int, Int)] = dict.sorted { (num1, num2) -> Bool in
-        return num1.1 > num2.1
-    }
+//    let stored: [(Int, Int)] = dict.sorted { (num1, num2) -> Bool in
+//        return num1.1 > num2.1
+//    }
     //取出前K个  S(k)
-    var array = [Int](repeating: 0, count: k)
-    for i in (0..<k) {
-        array[i] = result[i].0  //O(k)
-    }
+//    var array = [Int](repeating: 0, count: k)
+//    for i in (0..<k) {
+//        array[i] = stored[i].0  //O(k)
+//    }
+    
+    //等价于上面注释掉的代码
+    let stored = dict.sorted { $0.value > $1.value }
+    let array = stored[0..<k].map { $0.key }
+    
     return array
 }
 
@@ -87,4 +93,4 @@ func topKFrequent2(_ nums: [Int], _ k: Int) -> [Int]  {
 
 //print(topKFrequent2([6,0,1,4,9,7,-3,1,-4,-8,4,-7,-3,3,2,-3,9,5,-4,0], 6))
 
-print(topKFrequent2([1,1,1,2,2,3], 2))
+print(topKFrequent1([1,1,1,2,2,3], 2))
