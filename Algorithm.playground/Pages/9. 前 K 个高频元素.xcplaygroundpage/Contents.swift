@@ -51,7 +51,7 @@ func topKFrequent1(_ nums: [Int], _ k: Int) -> [Int] {
 }
 
 /*
- 思路2 桶排序 时间复杂度O(n+n+m+n) 空间复杂度S(m+n+k)  n数组元素数量  m不同的元素数量
+ 思路2 桶排序 时间复杂度O(n+m+n) 空间复杂度S(m+k)  n数组元素数量  m不同的元素数量
  */
 func topKFrequent2(_ nums: [Int], _ k: Int) -> [Int]  {
     var dict = [Int:Int]()  // S(m)
@@ -61,11 +61,9 @@ func topKFrequent2(_ nums: [Int], _ k: Int) -> [Int]  {
         dict[num] = count + 1
     }
     
-    //桶数组 索引是元素出现的次数  O(n)  S(n)
-    var bucketArray: [[Int]?] = []
-    for _ in (0...nums.count) {
-        bucketArray.append([])
-    }
+    //桶数组 索引是元素出现的次数
+    var bucketArray: [[Int]?] = [[Int]?](repeating: [], count: nums.count+1)
+    
     //把各个次数的元素放到对应的桶中  bucketArray[1] 表示所有出现次数为1的元素数组
     // O(m)
     for (key, value) in dict {
@@ -91,6 +89,24 @@ func topKFrequent2(_ nums: [Int], _ k: Int) -> [Int]  {
     return array
 }
 
+
+
+/*
+ 思路3 快速排序
+ */
+func topKFrequent3(_ nums: [Int], _ k: Int) -> [Int]  {
+    var dict = [Int:Int]()  // S(m)
+    //遍历存储每个元素出现的次数  O(n)
+    for num in nums {
+        let count: Int = dict[num] ?? 0
+        dict[num] = count + 1
+    }
+    
+    //待完善
+    
+    return []
+}
+
 //print(topKFrequent2([6,0,1,4,9,7,-3,1,-4,-8,4,-7,-3,3,2,-3,9,5,-4,0], 6))
 
-print(topKFrequent1([1,1,1,2,2,3], 2))
+print(topKFrequent2([1,1,1,2,2,3], 2))

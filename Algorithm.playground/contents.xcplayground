@@ -10,5 +10,6 @@
         <page name='7. 二叉树展开为链表'/>
         <page name='8. 打家劫舍'/>
         <page name='9. 前 K 个高频元素'/>
+        <page name='10. 有效的数独'/>
     </pages>
 </playground>
