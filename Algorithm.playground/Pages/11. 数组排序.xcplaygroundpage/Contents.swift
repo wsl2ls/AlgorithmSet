@@ -2,7 +2,7 @@
  
  11. 数组排序
  给定一个整数数组 nums，将该数组升序排列。
-
+ 
  示例 1：
  输入：[5,2,3,1]
  输出：[1,2,3,5]
@@ -81,25 +81,44 @@ func sortArray3(_ nums: inout [Int]) -> [Int] {
 
 /*
  4. 快速排序  时间复杂度O(nlogn) 空间复杂度S(logn)  不稳定
- 思想：以某一个数据为基准(例如第1个或中间的)，将整个序列划分为左右两个子序列，左边的都比基准值小，右边的都不小于基准值
+ 思想：以某一个数据为基准(例如第1个)，将整个序列划分为左右两个子序列，左边的都比基准值小，右边的都不小于基准值
  */
 func sortArray4(_ nums: inout [Int]) -> [Int] {
-    qSort(nums, 0, nums.count-1)
+    quickSort(&nums, left: 0, right: nums.count-1)
     return nums
 }
-//递归划分子序列
-func qSort(_ nums: [Int], _ left: Int, _ right: Int) {
-    //基准索引
-    var pivot = left
+//递归排序
+func quickSort(_ nums: inout [Int], left: Int, right: Int) {
+    guard left<=right else {
+        return
+    }
+    //基准点
+    let pivot = partition(&nums, left: left, right: right)
+    //左序列排序
+    quickSort(&nums, left: left, right: pivot-1)
+    //右序列排序
+    quickSort(&nums, left: pivot+1, right: right)
+}
+//划分为左右两个子序列
+func partition(_ nums: inout [Int],  left: Int, right: Int) -> Int {
+    var left = left
+    var right = right
+    //基准值
+    let pivot = nums[left]
     
-    
-    
-    //左序列
-//    qSort(<#T##nums: [Int]##[Int]#>, <#T##left: Int##Int#>, <#T##right: Int##Int#>)
-    
-    //右序列
-    
-    
+    while left<right {
+        while left<right, nums[right]>=pivot {
+            right -= 1
+        }
+        nums[left] = nums[right]
+        
+        while left<right, nums[left]<pivot {
+            left += 1
+        }
+        nums[right] = nums[left]
+    }
+    nums[left] = pivot
+    return left
 }
 
 
