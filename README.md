@@ -10,3 +10,16 @@
 7. [二叉树展开为链表](https://leetcode-cn.com/problems/flatten-binary-tree-to-linked-list)
 8. [打家劫舍](https://leetcode-cn.com/problems/house-robber)
 9. [前 K 个高频元素](https://leetcode-cn.com/problems/top-k-frequent-elements)
+
+
+
+
+## 推荐学习资料:
+
+> [Swift从入门到精通](https://ke.qq.com/course/392094?saleToken=1693443&from=pclink)
+
+> [恋上数据结构与算法（一）](https://ke.qq.com/course/385223?saleToken=1887678&from=pclink)
+
+> [恋上数据结构与算法（二）](https://ke.qq.com/course/421398?saleToken=1887679&from=pclink)
+
+> [每周一道算法题](https://ke.qq.com/course/436549?saleToken=1887824&from=pclink)
