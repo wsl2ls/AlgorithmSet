@@ -82,20 +82,14 @@ func isValidSudoku1(_ board: [[Character]]) -> Bool {
     for row in (0..<9) {
         for column in (0..<9) {
             let num = board[row][column]
-            if num == "." {
+            guard num != "." else {
                 continue
             }
             //contains函数也耗时 时间复杂度O(n)
-            if rows[row].contains(num) {
-                return false
-            }
-            if columns[column].contains(num) {
-                return false
-            }
+            if rows[row].contains(num) { return false }
+            if columns[column].contains(num) { return false }
             let boxeIndex = (row/3)*3+column/3
-            if boxes[boxeIndex].contains(num) {
-                return false
-            }
+            if boxes[boxeIndex].contains(num) { return false }
             rows[row].append(num)
             columns[column].append(num)
             boxes[boxeIndex].append(num)
@@ -123,9 +117,9 @@ func isValidSudoku2(_ board: [[Character]]) -> Bool {
         columns.removeAll()
         for j in (0..<9) {
             //i行j列
-            var rowNum = board[i][j]
+            let rowNum = board[i][j]
             //j行i列
-            var columnNum = board[j][i]
+            let columnNum = board[j][i]
             // 验证i行是否有重复元素
             if rowNum == "." {
             }else {
@@ -149,7 +143,7 @@ func isValidSudoku2(_ board: [[Character]]) -> Bool {
             if i%3 == 0 && j%3 == 0 {
                 boxes.removeAll()
                 for index in (0..<9) {
-                    var boxeNum = board[i+index/3][j+index%3]
+                    let boxeNum = board[i+index/3][j+index%3]
                     //                    print(boxeChar)
                     if boxeNum == "." {
                     }else {
@@ -174,7 +168,7 @@ func isValidSudoku2(_ board: [[Character]]) -> Bool {
  */
 func isValidSudoku3(_ board: [[Character]]) -> Bool {
     
-    var nums: [Bool] = [Bool](repeating: false, count: 9)
+    let nums: [Bool] = [Bool](repeating: false, count: 9)
     //行数组
     var rows: [[Bool]] = [[Bool]](repeating: nums, count: 9)
     //列数组
@@ -186,20 +180,14 @@ func isValidSudoku3(_ board: [[Character]]) -> Bool {
     for row in (0..<9) {
         for column in (0..<9) {
             let char: Character = board[row][column]
-            if char == "." {
+             guard char != "." else {
                 continue
             }
-            var num: Int = Int("\(char)")! - 1
-            if rows[row][num] {
-                return false
-            }
-            if columns[column][num] {
-                return false
-            }
+            let num: Int = Int("\(char)")! - 1
+            if rows[row][num] { return false }
+            if columns[column][num] { return false }
             let boxeIndex = (row/3)*3+column/3
-            if boxes[boxeIndex][num] {
-                return false
-            }
+            if boxes[boxeIndex][num] { return false }
             rows[row][num] = true
             columns[column][num] = true
             boxes[boxeIndex][num] = true
@@ -209,4 +197,4 @@ func isValidSudoku3(_ board: [[Character]]) -> Bool {
     return true
 }
 
-print("数独是否有效：\(isValidSudoku3(board))")
+print("数独是否有效：\(isValidSudoku2(board))")

@@ -11,5 +11,6 @@
         <page name='8. 打家劫舍'/>
         <page name='9. 前 K 个高频元素'/>
         <page name='10. 有效的数独'/>
+        <page name='11. 数组排序'/>
     </pages>
 </playground>
