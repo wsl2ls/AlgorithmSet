@@ -54,12 +54,28 @@ func sortArray1(_ nums: inout [Int]) -> [Int] {
 }
 
 /*
- 2. 希尔排序
+ 2. 希尔排序/缩小增量排序   时间复杂度O(n^(1.3-2)) 空间复杂度S(1)  不稳定
+思想：希尔排序是把记录按下标的一定增量分组，对每组使用直接插入排序算法排序；随着增量逐渐减少，每组包含的关键词越来越多，当增量减至1时，整个文件恰被分成一组，算法便终止
  */
 func sortArray2(_ nums: inout [Int]) -> [Int] {
-    for i in (0..<nums.count) {
-        //        let num = nums[i]
-    }
+//     NSMutableArray *unSortArray = [unsortDatas mutableCopy];
+//       int len = (int)unSortArray.count;
+//       for (int gap = floor(len / 2); gap > 0; gap = floor(gap/2)) {
+//           for (int i = gap; i < len; i++) {
+//               for (int j = i - gap; j >= 0 && [unSortArray[j] intValue] > [unSortArray[j+gap] intValue]; j-=gap) {
+//                   NSNumber *temp = unSortArray[j];
+//                   unSortArray[j] = unSortArray[gap+j];
+//                   unSortArray[gap+j] = temp;
+//               }
+//           }
+//       }
+//       return [unSortArray copy];
+    
+//    for <#item#> in <#items#> {
+//        <#code#>
+//    }
+    
+    
     return nums
 }
 
