@@ -93,11 +93,11 @@ func quickSort(_ nums: inout [Int], left: Int, right: Int) {
         return
     }
     //基准点
-    let pivot = partition(&nums, left: left, right: right)
+    let pivotIndex = partition(&nums, left: left, right: right)
     //左序列排序
-    quickSort(&nums, left: left, right: pivot-1)
+    quickSort(&nums, left: left, right: pivotIndex-1)
     //右序列排序
-    quickSort(&nums, left: pivot+1, right: right)
+    quickSort(&nums, left: pivotIndex+1, right: right)
 }
 //划分为左右两个子序列
 func partition(_ nums: inout [Int],  left: Int, right: Int) -> Int {
@@ -107,19 +107,25 @@ func partition(_ nums: inout [Int],  left: Int, right: Int) -> Int {
     let pivot = nums[left]
     
     while left<right {
+        // 从右边开始比较，比pivot大的数位置不变
         while left<right, nums[right]>=pivot {
             right -= 1
         }
+        //只要出现一个比pivot小的数，将这个数放入左边left的位置
         nums[left] = nums[right]
         
+        //从左边开始比较，比pivot小的数位置不变
         while left<right, nums[left]<pivot {
             left += 1
         }
+        //大的放到右边
         nums[right] = nums[left]
     }
+    //将pivot放入left的位置，则左侧数都比pivot小，右侧数都比pivot大
     nums[left] = pivot
     return left
 }
 
 
 print(sortArray4(&nums))
+
