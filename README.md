@@ -9,9 +9,9 @@
 6. [二叉树中的最大路径和](https://leetcode-cn.com/problems/binary-tree-maximum-path-sum)
 7. [二叉树展开为链表](https://leetcode-cn.com/problems/flatten-binary-tree-to-linked-list)
 8. [打家劫舍](https://leetcode-cn.com/problems/house-robber)
-9. [前 K 个高频元素](https://leetcode-cn.com/problems/top-k-frequent-elements)
-10.[有效的数独](https://leetcode-cn.com/problems/valid-sudoku)
-11. [数组排序](https://leetcode-cn.com/problemset/algorithms/)
+9. [前 K 个高频元素](https://leetcode-cn.com/problems/top-k-frequent-elements)    
+10.[有效的数独](https://leetcode-cn.com/problems/valid-sudoku) 
+11.[数组排序](https://leetcode-cn.com/problemset/algorithms/)
 
 
 
