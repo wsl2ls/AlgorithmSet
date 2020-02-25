@@ -142,6 +142,5 @@ func partition(_ nums: inout [Int],  left: Int, right: Int) -> Int {
     return left
 }
 
-
 print(sortArray4(&nums))
 
