@@ -35,13 +35,21 @@ func maxArea1(_ height: [Int]) -> Int {
 }
 
 /*
- 思路2：
+ 思路2：从左右两边柱子向中间靠拢，移动较低的一边
  时间复杂度O(n) 空间复杂度S(1)
  */
 func maxArea2(_ height: [Int]) -> Int {
     var maxArea = 0
-    for i in (0..<height.count) {
-       
+    var left = 0
+    var right = height.count - 1
+    while left < right {
+        maxArea = max(maxArea, (right-left)*min(height[left], height[right]))
+        //移动最低边的柱子
+        if height[left] < height[right] {
+            left+=1
+        }else {
+            right-=1
+        }
     }
     print(maxArea)
     return maxArea
