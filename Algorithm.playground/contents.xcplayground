@@ -12,6 +12,7 @@
         <page name='9. 前 K 个高频元素'/>
         <page name='10. 有效的数独'/>
         <page name='11. 数组排序'/>
-        <page name='12.移动零'/>
+        <page name='12. 移动零'/>
+        <page name='13. 盛最多水的容器'/>
     </pages>
 </playground>
