@@ -14,5 +14,6 @@
         <page name='11. 数组排序'/>
         <page name='12. 移动零'/>
         <page name='13. 盛最多水的容器'/>
+        <page name='14. 爬楼梯'/>
     </pages>
 </playground>
