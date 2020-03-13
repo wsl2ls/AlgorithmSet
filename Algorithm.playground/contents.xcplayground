@@ -15,5 +15,7 @@
         <page name='12. 移动零'/>
         <page name='13. 盛最多水的容器'/>
         <page name='14. 爬楼梯'/>
+        <page name='15. 两数之和'/>
+        <page name='16. 三数之和'/>
     </pages>
 </playground>
