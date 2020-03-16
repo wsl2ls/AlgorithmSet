@@ -16,24 +16,34 @@
  */
 
 
-// a + b = -c
 /*
- 思路1 暴力法
+ 思路1 暴力法  a + b = -c
  时间复杂度O(n^3) 空间复杂度S(1)
  */
 func threeSum1(_ nums: [Int]) -> [[Int]] {
-    
-    
-    
-    return []
+    var result: [[Int]] = []
+    for i in (0..<nums.count - 2) {
+        for j in (i+1..<nums.count - 1) {
+            for k in (j+1..<nums.count) {
+                if nums[i] + nums[j] + nums[k] == 0 {
+                    var abc = [nums[i], nums[j], nums[k]]
+                    result.append(abc)
+                }
+            }
+        }
+    }
+    return result
 }
+
 
 /*
  思路2 排序+双指针
  时间复杂度O()  空间复杂度S()
  */
-func threeSum1(_ nums: [Int]) -> [[Int]] {
-    
+func threeSum2(_ nums: [Int]) -> [[Int]] {
+    var result: [[Int]] = []
+    //O(nlog(n))
+    nums.sorted()
     
     
     return []
