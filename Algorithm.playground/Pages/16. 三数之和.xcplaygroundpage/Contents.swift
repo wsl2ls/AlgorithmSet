@@ -17,7 +17,7 @@
 
 
 /*
- 思路1 暴力法  a + b = -c
+ 思路1 暴力法
  时间复杂度O(n^3) 空间复杂度S(1)
  */
 func threeSum1(_ nums: [Int]) -> [[Int]] {
@@ -26,7 +26,7 @@ func threeSum1(_ nums: [Int]) -> [[Int]] {
         for j in (i+1..<nums.count - 1) {
             for k in (j+1..<nums.count) {
                 if nums[i] + nums[j] + nums[k] == 0 {
-                    var abc = [nums[i], nums[j], nums[k]]
+                    let abc = [nums[i], nums[j], nums[k]]
                     result.append(abc)
                 }
             }
@@ -38,15 +38,49 @@ func threeSum1(_ nums: [Int]) -> [[Int]] {
 
 /*
  思路2 排序+双指针
- 时间复杂度O()  空间复杂度S()
+ 固定 3 个指针中最左（最小）数字的指针 k，双指针 i，j 分设在数组索引 [k+1,nums.cout-1] 两端，通过双指针交替向中间移动，记录对于每个固定指针 k 的所有满足 nums[k] + nums[i] + nums[j] == 0 的 i,j 组合。
+ 时间复杂度O(n^2)  空间复杂度S(1)
  */
-func threeSum2(_ nums: [Int]) -> [[Int]] {
+func threeSum2(_ nums: inout [Int]) -> [[Int]] {
     var result: [[Int]] = []
-    //O(nlog(n))
-    var sortNums = nums.sorted()
-    print(sortNums)
-    for i in sortNums {
-        
+    //O(nlog(n)) 改变原数组的顺序
+    nums.sort { (num1, num2) -> Bool in
+        return num1 < num2
+    }
+    for k in (0..<nums.count-2) {
+        // nums[j] >= nums[i] >= nums[k] > 0
+        if nums[k] > 0 {
+            break
+        }
+         //如果当前K值重复，就直接跳过
+        if k > 0 && nums[k] == nums[k-1] {
+            continue
+        }
+        if nums.count < 3 {
+            return result
+        }
+        var i = k+1
+        var j = nums.count - 1
+        while i < j {
+            let s = nums[k] + nums[i] + nums[j]
+            if s < 0 {
+                i+=1
+                //如果下一个值重复，就直接指向下一个
+                while i < j && nums[i] == nums[i - 1] { i += 1 }
+            } else if s > 0 {
+                j-=1
+                //如果下一个值重复，就直接指向下一个
+                while i < j && nums[j] == nums[j - 1] { j -= 1 }
+            } else {
+                //s == 0
+                result.append([nums[k], nums[i], nums[j]])
+                i+=1
+                j-=1
+                //如果下一个值重复，就直接指向下一个
+                while i < j && nums[i] == nums[i - 1] { i += 1 }
+                while i < j && nums[j] == nums[j - 1] { j -= 1 }
+            }
+        }
     }
     return result
 }
@@ -54,5 +88,5 @@ func threeSum2(_ nums: [Int]) -> [[Int]] {
 
 //test
 var nums = [-1, 0, 1, 2, -1, -4]
-print(threeSum2(nums))
+print(threeSum2(&nums))
 
