@@ -38,7 +38,7 @@ func threeSum1(_ nums: [Int]) -> [[Int]] {
 
 /*
  思路2 排序+双指针
- 固定 3 个指针中最左（最小）数字的指针 k，双指针 i，j 分设在数组索引 [k+1,nums.cout-1] 两端，通过双指针交替向中间移动，记录对于每个固定指针 k 的所有满足 nums[k] + nums[i] + nums[j] == 0 的 i,j 组合。
+ 固定3个指针中最左（最小）数字的指针 k，双指针 i，j 分设在数组索引 [k+1,nums.cout-1] 两端，通过双指针交替向中间移动，记录对于每个固定指针 k 的所有满足 nums[k] + nums[i] + nums[j] == 0 的 i,j 组合。
  时间复杂度O(n^2)  空间复杂度S(1)
  */
 func threeSum2(_ nums: inout [Int]) -> [[Int]] {

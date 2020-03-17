@@ -17,5 +17,6 @@
         <page name='14. 爬楼梯'/>
         <page name='15. 两数之和'/>
         <page name='16. 三数之和'/>
+        <page name='17. 反转链表'/>
     </pages>
 </playground>
