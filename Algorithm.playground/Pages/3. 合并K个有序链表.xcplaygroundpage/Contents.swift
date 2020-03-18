@@ -192,11 +192,10 @@ var headNode3: ListNode? = creatList3()
 
 
 //输出新链表
-var newHeadNode: ListNode? = mergeKLists4([headNode1, headNode2, headNode3])
-var string: String = "\(newHeadNode!.val)"
-var nextNode : ListNode? = newHeadNode?.next
+var nextNode: ListNode? = mergeKLists4([headNode1, headNode2, headNode3])
+var string: String = ""
 while nextNode != nil {
-    string.append("->\(nextNode!.val)")
+    string.append("\(nextNode!.val)->")
     nextNode = nextNode?.next
 }
 

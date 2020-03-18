@@ -18,5 +18,6 @@
         <page name='15. 两数之和'/>
         <page name='16. 三数之和'/>
         <page name='17. 反转链表'/>
+        <page name='18. 环形链表'/>
     </pages>
 </playground>
