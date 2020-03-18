@@ -73,12 +73,11 @@ func reverseList2(_ head: ListNode?) -> ListNode? {
 
 //test
 //输出新链表
-var newHeadNode: ListNode? = reverseList2(creatList())
-var string: String = "\(newHeadNode!.val)"
-var nexNode : ListNode? = newHeadNode?.next
-while nexNode != nil {
-    string.append("->\(nexNode!.val)")
-    nexNode = nexNode?.next
+var nextNode: ListNode? = reverseList2(creatList())
+var string: String = ""
+while nextNode != nil {
+    string.append("\(nextNode!.val)->")
+    nextNode = nextNode?.next
 }
 print("合并后的链表：\(string)")
 
