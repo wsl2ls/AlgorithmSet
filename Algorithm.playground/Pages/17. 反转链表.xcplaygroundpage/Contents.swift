@@ -61,12 +61,13 @@ func reverseList1(_ head: ListNode?) -> ListNode? {
  时间复杂度O(n) 空间复杂度S(n)
  */
 func reverseList2(_ head: ListNode?) -> ListNode? {
-    
-    
-    
-    reverseList2(nil)
-    
-    return nil
+    if head == nil || head?.next == nil {
+        return head
+    }
+    let p = reverseList2(head?.next)
+    head?.next?.next = head
+    head?.next = nil
+    return p
 }
 
 
