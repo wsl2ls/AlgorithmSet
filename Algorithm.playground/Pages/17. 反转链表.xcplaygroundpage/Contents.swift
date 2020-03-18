@@ -37,27 +37,34 @@ func creatList () -> ListNode? {
     return node1
 }
 
+
 /*
  思路1：迭代
+ 时间复杂度O(n) 空间复杂度S(1)
  */
-var nextNode: ListNode?
 func reverseList1(_ head: ListNode?) -> ListNode? {
-    if nextNode == nil {
-        nextNode = head?.next
+    var preNode: ListNode?
+    var currentNode: ListNode? = head
+    while currentNode?.next != nil {
+        let nextTemp = currentNode?.next
+        currentNode?.next = preNode
+        preNode = currentNode
+        currentNode = nextTemp
     }
-    
-    head?.next?.next = head
-    head?.next = nil
-    print(nextNode?.val)
-    reverseList1(nextNode)
-    return nextNode
+    currentNode?.next = preNode
+    return currentNode
 }
 
 
 /*
- 思路2：
+ 思路2：递归  1->2->3->4->5
+ 时间复杂度O(n) 空间复杂度S(n)
  */
 func reverseList2(_ head: ListNode?) -> ListNode? {
+    
+    
+    
+    reverseList2(nil)
     
     return nil
 }
@@ -65,14 +72,13 @@ func reverseList2(_ head: ListNode?) -> ListNode? {
 
 //test
 //输出新链表
-var newHeadNode: ListNode? = reverseList1(creatList())
+var newHeadNode: ListNode? = reverseList2(creatList())
 var string: String = "\(newHeadNode!.val)"
 var nexNode : ListNode? = newHeadNode?.next
-while nextNode != nil {
+while nexNode != nil {
     string.append("->\(nexNode!.val)")
     nexNode = nexNode?.next
 }
-
 print("合并后的链表：\(string)")
 
 
