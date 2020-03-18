@@ -73,7 +73,7 @@ func reverseList2(_ head: ListNode?) -> ListNode? {
 
 //test
 //输出新链表
-var nextNode: ListNode? = reverseList(creatList())
+var nextNode: ListNode? = reverseList2(creatList())
 var string: String = ""
 while nextNode != nil {
     string.append("\(nextNode!.val)->")

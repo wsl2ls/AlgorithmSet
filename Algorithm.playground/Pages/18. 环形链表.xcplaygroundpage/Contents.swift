@@ -3,6 +3,7 @@
  
  为了表示给定链表中的环，我们使用整数 pos 来表示链表尾连接到链表中的位置（索引从 0 开始）。 如果 pos 是 -1，则在该链表中没有环。
  
+ 示例图在【Source】
  示例 1：
  输入：head = [3,2,0,-4], pos = 1
  输出：true
@@ -17,8 +18,7 @@
  输入：head = [1], pos = -1
  输出：false
  解释：链表中没有环。
- 
- 示例图在【Source】
+
  
  进阶：你能用 O(1)（即，常量）内存解决此问题吗？
  
@@ -47,7 +47,6 @@ func creatList () -> ListNode? {
     node4?.next = node2
     return node3
 }
-
 
 
 func hasCycle(_ head: ListNode?) -> Bool {
