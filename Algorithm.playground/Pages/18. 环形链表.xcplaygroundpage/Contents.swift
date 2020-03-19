@@ -52,6 +52,8 @@ func creatList () -> ListNode? {
 func hasCycle(_ head: ListNode?) -> Bool {
     
     
+    
+    
     return false
 }
 
