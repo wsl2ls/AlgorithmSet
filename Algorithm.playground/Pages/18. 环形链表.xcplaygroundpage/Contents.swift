@@ -18,7 +18,7 @@
  输入：head = [1], pos = -1
  输出：false
  解释：链表中没有环。
-
+ 
  
  进阶：你能用 O(1)（即，常量）内存解决此问题吗？
  
@@ -49,8 +49,24 @@ func creatList () -> ListNode? {
 }
 
 
-func hasCycle(_ head: ListNode?) -> Bool {
+/*
+ 思路1： 哈希表
+ 我们可以通过检查一个结点此前是否被访问过来判断链表是否为环形链表
+ 时间复杂度O(n)  空间复杂度S(n)
+ */
+func hasCycle1(_ head: ListNode?) -> Bool {
     
+    
+    
+    return false
+}
+
+/*
+ 思路2： 双指针/快慢指针
+ 通过使用具有 不同速度 的快、慢两个指针遍历链表，空间复杂度可以被降低至O(1)。慢指针每次移动一步，而快指针每次移动两步。
+ 时间复杂度O(n)  空间复杂度S(1)
+ */
+func hasCycle2(_ head: ListNode?) -> Bool {
     
     
     
@@ -59,5 +75,5 @@ func hasCycle(_ head: ListNode?) -> Bool {
 
 
 //test
-var has = hasCycle(creatList())
+var has = hasCycle1(creatList())
 print(has ? "有环" : "无环")
