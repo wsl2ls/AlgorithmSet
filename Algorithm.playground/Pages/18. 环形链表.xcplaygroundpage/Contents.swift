@@ -34,7 +34,9 @@ public class ListNode {
         self.next = nil
     }
 }
-//创建环形链表 3->2->0->-4->2  返回链表的头节点
+
+
+//创建环形链表 3->2->0->-4->2  返回链表的头节点  这里假设 val唯一
 func creatList () -> ListNode? {
     let node3: ListNode? = ListNode.init(3)
     let node2: ListNode? = ListNode.init(2)
@@ -55,9 +57,21 @@ func creatList () -> ListNode? {
  时间复杂度O(n)  空间复杂度S(n)
  */
 func hasCycle1(_ head: ListNode?) -> Bool {
+    var headNode = head
     
-    
-    
+    //用数组模拟哈希表
+    var array: [ListNode?] = []
+    while headNode != nil {
+        //O(n) 如果是哈希表查询则是O(1)
+        let isContains = array.contains { (item) -> Bool in
+            return item?.val == headNode?.val
+        }
+        if isContains {
+            return true
+        }
+        array.append(headNode)
+        headNode = headNode?.next
+    }
     return false
 }
 
@@ -67,13 +81,22 @@ func hasCycle1(_ head: ListNode?) -> Bool {
  时间复杂度O(n)  空间复杂度S(1)
  */
 func hasCycle2(_ head: ListNode?) -> Bool {
-    
-    
-    
-    return false
+    if head == nil || head?.next == nil {
+        return false
+    }
+    var slow = head;
+    var fast = head?.next
+    while slow?.val != fast?.val {
+        if fast == nil || fast?.next == nil {
+            return false
+        }
+        slow = slow?.next
+        fast = fast?.next?.next
+    }
+    return true
 }
 
 
 //test
-var has = hasCycle1(creatList())
+var has = hasCycle2(creatList())
 print(has ? "有环" : "无环")
