@@ -51,7 +51,7 @@ func checkValidString(_ s: String) -> Bool {
 //        leftIndex += 1
 //        rightIndex -= 1
 //    }
-//    return true
+    return true
     
 }
 

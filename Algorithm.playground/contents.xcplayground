@@ -20,5 +20,6 @@
         <page name='17. 反转链表'/>
         <page name='18. 环形链表'/>
         <page name='19. 有效的括号字符串'/>
+        <page name='20. 有效的括号'/>
     </pages>
 </playground>
