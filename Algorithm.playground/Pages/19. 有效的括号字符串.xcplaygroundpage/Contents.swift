@@ -33,20 +33,29 @@
 
 
 /*
- 思路1：
- 时间复杂度O()   空间复杂度S()
+ 思路1：双指针
+ 时间复杂度O(n)   空间复杂度S(n)
  */
 func checkValidString(_ s: String) -> Bool {
-     
+    let chars: [Character] = s.suffix(s.count)
+    var leftIndex = 0
+    var rightIndex = s.count-1
     
     
     
-   
+//    while leftIndex < rightIndex {
+//        if((chars[leftIndex] == "(" || chars[leftIndex] == "*") && (chars[rightIndex] == ")" || chars[rightIndex] == "*")) {
+//        }else {
+//            return false
+//        }
+//        leftIndex += 1
+//        rightIndex -= 1
+//    }
+//    return true
     
-    return true
 }
 
 //test
-var isValid = checkValidString("(*))")
+var isValid = checkValidString("(*()")
 print(isValid)
 
