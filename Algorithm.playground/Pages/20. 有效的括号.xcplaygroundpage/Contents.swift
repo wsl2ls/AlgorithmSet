@@ -24,27 +24,31 @@
 
 
 /*
- 思路： 栈
+ 思路1： 栈  用数组模拟栈
  时间复杂度O(n) 空间复杂度S(n)
  */
-func isValid(_ s: String) -> Bool {
+func isValid1(_ s: String) -> Bool {
+    //用数组模拟栈
     var stack:[Character] = []
     for char in s {
         switch stack.last {
         case "(":
             if char == ")" {
+                //匹配出栈
                 stack.removeLast()
                 continue
             }
             break
         case "[":
             if char == "]" {
+                //匹配出栈
                 stack.removeLast()
                 continue
             }
             break
         case "{":
             if char == "}" {
+                //匹配出栈
                 stack.removeLast()
                 continue
             }
@@ -52,6 +56,7 @@ func isValid(_ s: String) -> Bool {
         default:
             break
         }
+        //不匹配进栈
         stack.append(char)
     }
     
@@ -62,6 +67,63 @@ func isValid(_ s: String) -> Bool {
     }
 }
 
+/*
+ 思路2： 指针  跟思路1差不多，直接对操作字符串，会改变源字符串
+ 时间复杂度O(n) 空间复杂度S(1)
+ */
+func isValid2(_ s: inout String) -> Bool {
+    var index = 0
+    while index < s.count {
+        if index - 1 < 0 {
+            index += 1
+        }
+        let preIndex = s.index(s.startIndex, offsetBy: (index-1))
+        let preChar = s[preIndex]
+        
+        let curIndex = s.index(s.startIndex, offsetBy: (index))
+        let curChar = s[curIndex]
+        
+        switch preChar {
+        case "(":
+            if curChar == ")" {
+                //匹配出栈
+                index -= 1
+                s.removeSubrange(preIndex...curIndex)
+                continue
+            }
+            break
+        case "[":
+            if curChar == "]" {
+                //匹配出栈
+                index -= 1
+                s.removeSubrange(preIndex...curIndex)
+                continue
+            }
+            break
+        case "{":
+            if curChar == "}" {
+                //匹配出栈
+                index -= 1
+                s.removeSubrange(preIndex...curIndex)
+                continue
+            }
+            break
+        default:
+            break
+        }
+        //不匹配进栈
+        index += 1
+    }
+    
+    if s.count == 0 {
+        return true
+    }else {
+        return false
+    }
+}
+
 
 //test
-print(isValid("()[]{}"))
+var string = "()[()]{}"
+
+print(isValid2(&string))
