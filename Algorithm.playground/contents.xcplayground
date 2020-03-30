@@ -22,5 +22,6 @@
         <page name='19. 有效的括号字符串'/>
         <page name='20. 有效的括号'/>
         <page name='21. 最小栈'/>
+        <page name='22. 柱状图中最大的矩形'/>
     </pages>
 </playground>
