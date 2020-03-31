@@ -61,6 +61,7 @@ func largestRectangleArea2(_ heights: [Int]) -> Int {
  时间复杂度O(n) 空间复杂度S(n)
  */
 func largestRectangleArea3(_ heights: [Int]) -> Int {
+    //存储索引
     var stack: [Int] = []
     var maxArea: Int = 0
     //为了减少临界处理，我们在 heights 数组的左右两端都塞入0，也就是加入了两根高度为0的柱子。
