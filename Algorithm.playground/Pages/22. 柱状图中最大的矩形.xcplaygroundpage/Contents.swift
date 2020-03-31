@@ -20,30 +20,63 @@
 
 
 /*
- 思路1：
- 时间复杂度O(n) 空间复杂度S(1)
+ 思路1：暴力法
+ 时间复杂度O(n^3) 空间复杂度S(1)
  */
-func largestRectangleArea(_ heights: [Int]) -> Int {
-    if heights.count == 1 {
-        return heights.first!
-    }
+func largestRectangleArea1(_ heights: [Int]) -> Int {
     var maxArea = 0
-    var left = 0
-    var right = heights.count - 1
-    while left < right {
-        maxArea = max(maxArea, (right-left+1)*min(heights[left], heights[right]))
-        print(maxArea)
-        //移动最低边的柱子
-        if heights[left] < heights[right] {
-            left+=1
-        }else {
-            right-=1
+    for i in  (0..<heights.count) {
+        for j in (i..<heights.count) {
+            var minHieght = Int.max
+            for k in (i...j) {
+                 minHieght = min(minHieght, heights[k])
+            }
+            maxArea = max(maxArea, (j-i+1)*minHieght)
         }
     }
     print(maxArea)
     return maxArea
 }
 
+
+/*
+ 思路2： 对暴力法进行优化  保存前一对柱子的最低高度
+ 时间复杂度O(n^2) 空间复杂度S(1)
+ */
+func largestRectangleArea2(_ heights: [Int]) -> Int {
+    var maxArea = 0
+    for i in  (0..<heights.count) {
+        var minHieght = Int.max
+        for j in (i..<heights.count) {
+            minHieght = min(minHieght, heights[j])
+            maxArea = max(maxArea, (j-i+1)*minHieght)
+        }
+    }
+    print(maxArea)
+    return maxArea
+}
+
+/*
+ 思路3：栈
+ 时间复杂度O(n) 空间复杂度S(n)
+ */
+func largestRectangleArea3(_ heights: [Int]) -> Int {
+    var stack: [Int] = []
+    var maxArea: Int = 0
+    let heights = [0] + heights + [0]
+    
+    for i in 0..<heights.count {
+        while let topIndex = stack.last, heights[topIndex] > heights[i] {
+            stack.removeLast()
+            maxArea = max(maxArea, heights[topIndex] * (i - stack.last! - 1))
+        }
+        stack.append(i)
+    }
+    print(maxArea)
+    return maxArea
+}
+
+
 // test
 var heighs =  [2,1,5,6,2,3]
-largestRectangleArea(heighs)
+largestRectangleArea3(heighs)
