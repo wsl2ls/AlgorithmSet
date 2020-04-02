@@ -31,11 +31,10 @@
 
 
 
-
-/*
+/* 双端队列
  时间复杂度O(n) 空间复杂度S(n)
  */
-func maxSlidingWindow(_ nums: [Int], _ k: Int) -> [Int] {
+func maxSlidingWindow1(_ nums: [Int], _ k: Int) -> [Int] {
     var queue = [Int]()
     var finalQueue = [Int]()
     var maxCountIndex = 0
@@ -51,11 +50,49 @@ func maxSlidingWindow(_ nums: [Int], _ k: Int) -> [Int] {
         if index + 1 >= k {
             finalQueue.append(nums[maxCountIndex])
         }
-        
     }
     return finalQueue
 }
 
+
+/*
+ 动态规划
+ 时间复杂度O(n) 空间复杂度S(n)
+ */
+func maxSlidingWindow2(_ nums: [Int], _ k: Int) -> [Int]  {
+    let n = nums.count
+    if n * k <= 0 {
+        return []
+    }else if k == 1 {
+        return nums;
+    }
+    
+    var maxArr = [Int]()
+    var left = [Int]()
+    var right = Array(repeating: 0, count: n)
+    
+    for i in 0..<n {
+        
+        if i % k == 0 {
+            left.append(nums[i])
+        }else{
+            left.append(max(nums[i], left.last!))
+        }
+        
+        let j = n - i - 1
+        if (j+1) % k == 0 || i == 0 {
+            right[j] = nums[j]
+        }else{
+            right[j] = max(right[j+1], nums[j])
+        }
+    }
+    
+    for i in k-1..<n {
+        maxArr.append(max(left[i], right[i-k+1]))
+    }
+    return maxArr
+}
+
 let nums = [1,3,-1,-3,5,3,6,7]
-print(maxSlidingWindow(nums, 3))
+print(maxSlidingWindow2(nums, 3))
 
