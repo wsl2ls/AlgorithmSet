@@ -20,11 +20,16 @@
 
 
 func reverseString(_ s: inout [Character]) {
-
-    
-
+    var left = 0
+    var right = s.count - 1
+    while right > left {
+        s.swapAt(left, right)
+        left += 1
+        right -= 1
+    }
+    print(s)
 }
 
 
 var char: [Character] = ["h","e","l","l","o"]
-print(reverseString(&char))
+reverseString(&char)
