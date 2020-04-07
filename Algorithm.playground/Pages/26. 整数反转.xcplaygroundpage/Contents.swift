@@ -31,7 +31,7 @@ func reverse(_ x: Int) -> Int {
         m = m/10
     }
     if n > Int32.max || n < Int32.min {
-        return 0;
+        return 0
     }
     return n
 }
