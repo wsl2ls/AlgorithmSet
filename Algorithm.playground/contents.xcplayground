@@ -25,12 +25,13 @@
         <page name='22. 柱状图中最大的矩形'/>
         <page name='23. 滑动窗口最大值'/>
         <page name='24. 翻转二叉树'/>
-        <page name='25. 字符串翻转'/>
+        <page name='25. 字符串反转'/>
         <page name='26. 整数反转'/>
         <page name='27. 查找第一个只出现一次的字符(元素)'/>
         <page name='28. 两个子视图的公共父视图'/>
         <page name='29. 两个有序数组合并'/>
         <page name='30. 两个单链表是否相交'/>
         <page name='31. 无序数组中位数查找'/>
+        <page name='32. 找出一组数据中第二大的数'/>
     </pages>
 </playground>
