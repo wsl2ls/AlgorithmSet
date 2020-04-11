@@ -33,5 +33,10 @@
         <page name='30. 两个单链表是否相交'/>
         <page name='31. 无序数组中位数查找'/>
         <page name='32. 第三大的数'/>
+        <page name='33. 数组中的第K个最大元素'/>
+        <page name='34. 动态规划'/>
+        <page name='35. 贪心算法'/>
+        <page name='36. 哈希表'/>
+        <page name='37. 红黑树'/>
     </pages>
 </playground>
