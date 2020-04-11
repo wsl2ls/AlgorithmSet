@@ -24,18 +24,50 @@
  */
 
 
-
+/*
+ 三指针
+ 时间复杂度O(n) 空间复杂度(1)
+ */
 func thirdMax(_ nums: [Int]) -> Int {
    
+    var first = Int.min
+    var second = Int.min
+    var three = Int.min
     
+    for i in (0..<nums.count) {
+        
+        if nums[i] <= three {
+            continue
+        }
+        
+        if nums[i] < second {
+            three = nums[i]
+            continue
+        }else if nums[i] ==  second {
+            continue
+        }
+        
+        if nums[i] < first {
+            three = second
+            second = nums[i]
+            continue
+        }else if nums[i] == first {
+            continue
+        }
+        
+        three = second
+        second = first
+        first = nums[i]
+    }
     
-    
-    
-    return 0
+    if three == Int.min {
+        return first
+    }
+    return three
 }
 
 
-var nums = [3, 2, 1]
+var nums = [1, 2, 2, 5, 3, 5]
 print(thirdMax(nums))
 
 
