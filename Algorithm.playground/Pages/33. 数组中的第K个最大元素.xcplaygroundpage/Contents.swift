@@ -19,10 +19,57 @@
  */
 
 
-
+/*
+  大顶推
+ 时间复杂度O(NlogK) 空间复杂度S(K)
+ */
 func findKthLargest(_ nums: [Int], _ k: Int) -> Int {
-   
-    return 0
+    // 取前k个作为小顶堆，堆容量为k
+    var heap = [Int](nums[0..<k])
+    // 自下而上，下滤建堆
+    var index = max(0, heap.count >> 1 - 1)
+    while index >= 0 {
+        siftDown(&heap, index: index)
+        index -= 1
+    }
+    // 遍历剩下的数据
+    for index in k..<nums.count {
+        let num = nums[index]
+        // 如果发现一个值比堆中最小的大，换掉堆中最小的
+        if num > heap[0] {
+            heap[0] = num
+            siftDown(&heap, index: 0)
+        }
+    }
+    // 堆顶元素就是第k小元素
+    return heap[0]
+}
+
+/// 下滤，适用小顶堆
+func siftDown(_ nums: inout [Int], index: Int) {
+    var index = index
+    // 备份待下滤元素
+    let element = nums[index]
+    let half = nums.count >> 1
+    // index要指向非叶子节点，不断下移
+    while index < half {
+        // 取出左节点
+        var childIndex = index << 1 + 1
+        var childValue = nums[childIndex]
+        // 如果右节点值比左小，指向右节点
+        if childIndex + 1 < nums.count && nums[childIndex + 1] < childValue {
+            childIndex += 1
+            childValue = nums[childIndex]
+        }
+        guard element > childValue else {
+            break
+        }
+        // 子节点移到父节点处
+        nums[index] = childValue
+        index = childIndex
+        
+    }
+    nums[index] = element
 }
 
 
