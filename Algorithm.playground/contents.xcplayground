@@ -39,5 +39,6 @@
         <page name='36. 哈希表'/>
         <page name='37. 红黑树'/>
         <page name='38. 有效的字母异位词'/>
+        <page name='39. 括号生成'/>
     </pages>
 </playground>
