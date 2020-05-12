@@ -31,11 +31,23 @@ func twoSum1(_ nums: [Int], _ target: Int) -> [Int] {
 }
 
 /*
- 思路2  哈希表
+ 思路2  哈希表 nums是否包含 b = target - a
  时间复杂度O(n) 空间复杂度S(n)
  */
 func twoSum2(_ nums: [Int], _ target: Int) -> [Int] {
-    return []
+    var result = [Int]()
+    var container = Set<Int>()
+    for (index, value) in nums.enumerated() {
+        let match = target - value
+        if container.contains(match) {
+            let first  = nums.firstIndex(of: match)!
+            result.append(first)
+            result.append(index)
+            break
+        }
+        container.insert(value)
+    }
+    return result
 }
 
 
