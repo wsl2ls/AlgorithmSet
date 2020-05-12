@@ -38,5 +38,6 @@
         <page name='35. 贪心算法'/>
         <page name='36. 哈希表'/>
         <page name='37. 红黑树'/>
+        <page name='38. 有效的字母异位词'/>
     </pages>
 </playground>
