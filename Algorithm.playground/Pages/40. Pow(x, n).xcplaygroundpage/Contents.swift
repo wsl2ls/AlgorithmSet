@@ -41,6 +41,7 @@ func myPow1(_ x: Double, _ n: Int) -> Double {
 
 /*
  分治法 迭代
+ 思路：https://leetcode-cn.com/problems/powx-n/solution/powx-n-by-leetcode-solution/
  时间复杂度：O(logn) 空间复杂度：S(1)
  */
 func myPow2(_ x: Double, _ n: Int) -> Double {
@@ -51,15 +52,15 @@ func calculate(_ x: Double, _ n: Int) -> Double {
     // 贡献的初始值为 x
     var xcon = x
     var num = n
-    // 在对 N 进行二进制拆分的同时计算答案
+    // 在对 n 进行二进制拆分的同时计算答案
     while num > 0 {
         if num % 2 == 1 {
-            // 如果 N 二进制表示的最低位为 1，那么需要计入贡献
+            // 如果 n 二进制表示的最低位为 1，那么需要计入贡献
             ans *= xcon
         }
         // 将贡献不断地平方
         xcon *= xcon
-        // 舍弃 N 二进制表示的最低位，这样我们每次只要判断最低位即可
+        // 舍弃 n 二进制表示的最低位，这样我们每次只要判断最低位即可
         num /= 2
     }
     return ans
