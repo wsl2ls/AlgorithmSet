@@ -40,5 +40,6 @@
         <page name='37. 红黑树'/>
         <page name='38. 有效的字母异位词'/>
         <page name='39. 括号生成'/>
+        <page name='40. Pow(x, n)'/>
     </pages>
 </playground>
