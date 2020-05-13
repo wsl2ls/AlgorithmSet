@@ -48,13 +48,18 @@ func myPow2(_ x: Double, _ n: Int) -> Double {
 }
 func calculate(_ x: Double, _ n: Int) -> Double {
     var ans = 1.0
+    // 贡献的初始值为 x
     var xcon = x
     var num = n
+    // 在对 N 进行二进制拆分的同时计算答案
     while num > 0 {
         if num % 2 == 1 {
+            // 如果 N 二进制表示的最低位为 1，那么需要计入贡献
             ans *= xcon
         }
+        // 将贡献不断地平方
         xcon *= xcon
+        // 舍弃 N 二进制表示的最低位，这样我们每次只要判断最低位即可
         num /= 2
     }
     return ans
